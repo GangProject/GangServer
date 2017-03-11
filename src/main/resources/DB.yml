@@ -1,0 +1,11 @@
+## DataSource configuration
+spring.datasource.url: jdbc:mysql://127.0.0.1/gang?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+spring.datasource.username: root
+spring.datasource.password: sc5203nv
+spring.datasource.driverClassName: com.mysql.jdbc.Driver
+## Hibernate configuration
+# down part is reset rows or table so very seriously using
+spring.jpa.hibernate.ddl-auto: validate
+spring.jpa.hibernate.naming.strategy: org.hibernate.cfg.ImprovedNamingStrategy
+spring.jpa.show-sql: true
+
