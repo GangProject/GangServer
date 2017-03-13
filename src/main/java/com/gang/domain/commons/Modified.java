@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners({ ModifiedAuditorAware.class })
 public class Modified extends Created{
-    @Column
+    @Column(name="modifiedAt")
     private LocalDateTime modifiedAt;
-    @Column
+    @Column(name="modifiedBy")
     private String modifiedBy;
 }

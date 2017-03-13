@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class CreatedAuditorAware {
     @PrePersist
     public void setCreated(Created created){
-        created.setCreateAt(LocalDateTime.now());
-        created.setCreateBy(GangConstant.SYSTEM);
+        created.setCreatedAt(LocalDateTime.now());
+        created.setCreatedBy(GangConstant.SYSTEM);
     }
 }

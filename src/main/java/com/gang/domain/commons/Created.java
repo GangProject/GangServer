@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners({ CreatedAuditorAware.class })
 public class Created {
-    @Column
-    private LocalDateTime createAt;
+    @Column(name="createdAt")
+    private LocalDateTime createdAt;
 
-    @Column
-    private String createBy;
+    @Column(name="createdBy")
+    private String createdBy;
 }
