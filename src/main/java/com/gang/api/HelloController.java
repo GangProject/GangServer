@@ -1,5 +1,6 @@
 package com.gang.api;
 
+import com.gang.api.common.HelloResponseDto;
 import com.gang.api.common.ResponseDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/hello")
 public class HelloController {
+
     @ApiOperation(value = "hello api", notes = "hello api")
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseDto index(){
-        return ResponseDto.ofSuccess("Success");
+    public HelloResponseDto index(){
+        return HelloResponseDto.of();
     }
+
+
 
 }
