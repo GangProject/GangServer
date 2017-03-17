@@ -27,4 +27,17 @@ public class Article extends Modified{
     @Lob
     private String content;
 
+    public static Article of(String title, String content){
+        return Article.builder()
+                .title(title)
+                .content(content)
+                .build();
+    }
+
+    public static Article of(ArticleDto articleDto){
+        return Article.builder()
+                .title(articleDto.getTitle())
+                .content(articleDto.getContent())
+                .build();
+    }
 }
