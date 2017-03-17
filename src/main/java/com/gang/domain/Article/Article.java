@@ -40,4 +40,9 @@ public class Article extends Modified{
                 .content(articleDto.getContent())
                 .build();
     }
+
+    public Article(String title, String content){
+        this.title=title;
+        this.content=content;
+    }
 }
