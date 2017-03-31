@@ -29,4 +29,11 @@ public class ArticleDto {
                 .title(title)
                 .build();
     }
+
+    public static ArticleDto of(ArticleRequestDto articleRequestDto){
+        return ArticleDto.builder()
+                .content(articleRequestDto.getContent())
+                .title(articleRequestDto.getTitle())
+                .build();
+    }
 }

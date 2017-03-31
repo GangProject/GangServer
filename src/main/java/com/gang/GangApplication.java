@@ -1,6 +1,8 @@
-package com.gang.config;
+package com.gang;
 
 import com.gang.api.GangApis;
+import com.gang.config.MvcConfig;
+import com.gang.config.SwaggerConfig;
 import com.gang.domain.Domains;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,5 @@
 package com.gang;
 
-import com.gang.config.GangApplication;
 import com.gang.domain.Article.Article;
 import com.gang.domain.Article.ArticleRepository;
 import org.junit.Before;
