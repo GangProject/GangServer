@@ -31,4 +31,11 @@ public class ResponseDto {
                 .status(Status.FAIL)
                 .message(message).build();
     }
+
+    public static ResponseDto ofEmpty(){
+        return ResponseDto.builder()
+                .status(Status.FAIL)
+                .message(null)
+                .build();
+    }
 }

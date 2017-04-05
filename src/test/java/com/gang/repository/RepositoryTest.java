@@ -1,6 +1,6 @@
-package com.gang;
+package com.gang.repository;
 
-import com.gang.config.GangApplication;
+import com.gang.GangApplication;
 import com.gang.domain.Article.Article;
 import com.gang.domain.Article.ArticleRepository;
 import org.junit.Before;
@@ -44,5 +44,18 @@ public class RepositoryTest {
 
         assertThat(Created.getTitle(), is(findArticle.getTitle()));
         assertThat(Created.getContent(), is(findArticle.getContent()));
+    }
+
+    @Test
+    public void deleteTest() throws Exception{
+        Article Created = articleRepository.save(article);
+        Article findArticle = articleRepository.findOne(Created.getId());
+
+        assertThat(Created.getTitle(), is(findArticle.getTitle()));
+        assertThat(Created.getContent(), is(findArticle.getContent()));
+
+        articleRepository.delete(findArticle.getId());
+        ;//TODO 삭제여부 검색
+
     }
 }

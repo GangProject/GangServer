@@ -1,6 +1,5 @@
 package com.gang;
 
-import com.gang.config.GangApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
