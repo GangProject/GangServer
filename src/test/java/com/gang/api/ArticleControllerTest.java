@@ -1,4 +1,4 @@
-package com.gang;
+package com.gang.api;
 
 import com.gang.api.ArticleController;
 import com.gang.domain.Article.ArticleResponseDto;
@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -31,15 +32,22 @@ public class ArticleControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void articleSaveTst() throws Exception{
-        ArticleResponseDto dto = new ArticleResponseDto();
-        dto.setTitle("titleTest");
-        dto.setContent("contentTest");
+    public void articleSaveTest() throws Exception{
         mockMvc.perform(post("/api/article/save")//요청하는 url
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(dto.toString()))
+                .param("title","testTitle")
+                .param("content","testContent"))
                 .andExpect(status().isOk())//요청결과가 200이다
+                .andReturn();
+    }
+
+    @Test
+    public void articleListTest() throws Exception{
+        mockMvc.perform(get("/api/article")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
                 .andReturn();
     }
 }

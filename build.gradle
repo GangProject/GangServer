@@ -32,6 +32,9 @@ repositories {
 	maven { url "https://repo.spring.io/milestone" }
 }
 
+configurations {
+	providedRuntime
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -57,4 +60,49 @@ dependencies {
 	//devtools
 	compile("org.springframework.boot:spring-boot-devtools")
 
+    def querydslVersion = "4.1.4"
+    /**
+     * querydsl dependency
+     */
+    compile ("com.querydsl:querydsl-core:$querydslVersion")
+    compile ("com.querydsl:querydsl-apt:$querydslVersion")
+    compile ("com.querydsl:querydsl-jpa:$querydslVersion")
+}
+def queryDslOutput = file("src/main/generated/java")
+
+sourceSets {
+	main {
+		java {
+			srcDir "src/main/generated/java"
+		}
+	}
+}
+task generateQueryDSL(type: JavaCompile, group: 'build') {
+	doFirst {
+		if (!queryDslOutput.exists()) {
+			logger.info("Creating `$queryDslOutput` directory")
+
+			if (!queryDslOutput.mkdirs()) {
+				throw new InvalidUserDataException("Unable to create `$queryDslOutput` directory")
+			}
+		}
+	}
+
+	source = sourceSets.main.java
+	classpath = configurations.compile
+	options.compilerArgs = [
+			"-proc:only",
+			"-processor",
+			"com.querydsl.apt.jpa.JPAAnnotationProcessor"
+	]
+	destinationDir = queryDslOutput
+}
+
+compileTestJava.dependsOn(generateQueryDSL)
+
+springBoot {
+	mainClass = "net.woniper.querydsl.SpringBootQuerydslApplication"
+}
+clean{
+	delete queryDslOutput
 }

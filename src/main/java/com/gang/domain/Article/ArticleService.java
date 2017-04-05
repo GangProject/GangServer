@@ -24,4 +24,13 @@ public class ArticleService {
     public List<Article> findAllArticleList(){
         return articleRepository.findAll();
     }
+
+    @Transactional(readOnly = false)
+    public void delete(Long id){
+        articleRepository.delete(id);
+    }
+
+    public ArticleListDto findArticleList(int currentPage){
+        return ArticleListDto.of(articleRepository.articleList(currentPage),currentPage);
+    }
 }
