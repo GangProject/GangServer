@@ -24,4 +24,26 @@ public class FeedBack extends Created{
 
     @Column( name ="content")
     private String content;
+
+    @Column( name= "name")
+    private String name;
+
+    @Column( name="password")
+    private String password;
+
+    public static FeedBack of(FeedBackDto feedBackDto){
+        return FeedBack.builder()
+                .content(feedBackDto.getContent())
+                .name(feedBackDto.getName())
+                .password(feedBackDto.getPassword())
+                .build();
+    }
+
+    public static FeedBack of(String content, String name, String password){
+        return FeedBack.builder()
+                .content(content)
+                .name(name)
+                .password(password)
+                .build();
+    }
 }

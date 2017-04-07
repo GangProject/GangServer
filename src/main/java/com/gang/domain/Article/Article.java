@@ -41,8 +41,4 @@ public class Article extends Modified{
                 .build();
     }
 
-    public Article(String title, String content){
-        this.title=title;
-        this.content=content;
-    }
 }
