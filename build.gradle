@@ -42,6 +42,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.projectlombok:lombok:1.16.4")
 	runtime('mysql:mysql-connector-java')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
 
 	// swagger
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.5.0'

@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
 @WebAppConfiguration
 @AutoConfigureWebMvc
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class RepositoryTest {
+public class ArticleRepositoryTest {
     @Autowired
     private ArticleRepository articleRepository;
 
@@ -34,7 +34,7 @@ public class RepositoryTest {
 
     @Before
     public void setUp() throws Exception{
-        article = new Article("test3_title","test3_content");
+        article = Article.of("test3_title","test3_content");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class RepositoryTest {
         assertThat(Created.getContent(), is(findArticle.getContent()));
 
         articleRepository.delete(findArticle.getId());
-        ;//TODO 삭제여부 검색
+        //TODO 삭제여부 검색
 
     }
 }
