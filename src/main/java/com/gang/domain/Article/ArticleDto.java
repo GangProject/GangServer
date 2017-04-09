@@ -15,6 +15,7 @@ public class ArticleDto {
     private String content;
     private String title;
 
+
     public static ArticleDto of(Article article){
         return ArticleDto.builder()
                 .id(article.getId())

@@ -26,7 +26,9 @@ create Table GANG.feedback(
 	`Feedback_id` bigint(20) Not Null auto_increment primary Key,
     `content` varchar(200) Not Null,
     `createdAt` dateTime Not Null,
-    `createdBy` varchar(50) NOt Null
+    `createdBy` varchar(50) NOt Null,
+    `name` varchar(200) Not Null,
+    `password` varchar(256) NOT NULL
 );
 
 DROP TABLE IF EXISTS GANG.feedback_comment;

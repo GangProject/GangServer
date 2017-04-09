@@ -1,8 +1,6 @@
 package com.gang.domain.FeedBack;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,10 +10,12 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class FeedBackListDto {
-    List<FeedBack> list;
-    int currentPage;
-    int totalPage;
+    private List<FeedBack> list;
+    private int currentPage;
+    private int totalPage;
 
     public static FeedBackListDto of(List<FeedBack> list, int currentPage,int totalPage){
         return FeedBackListDto.builder()

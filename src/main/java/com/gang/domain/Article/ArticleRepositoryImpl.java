@@ -17,7 +17,14 @@ public class ArticleRepositoryImpl extends QueryDslRepositorySupport implements 
     @Override
     public List<Article> articleList(int currentPage){
         return from(qArticle)
+                .offset((currentPage-1) * 10)
                 .limit(currentPage*10)
                 .fetch();
+    }
+
+    @Override
+    public int totalCount(){
+        return (int)from(qArticle)
+                .fetchCount();
     }
 }
