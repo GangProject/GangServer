@@ -12,9 +12,9 @@ import lombok.Setter;
 @Builder
 public class FeedBackDto {
 
-    String content;
-    String name;
-    String password;
+    private String content;
+    private String name;
+    private String password;
 
     public static FeedBackDto of(String content, String name, String password){
         return FeedBackDto.builder()

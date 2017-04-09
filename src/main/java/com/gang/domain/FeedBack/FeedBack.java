@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @Builder
 @Entity
-@Table( name = "feedBack")
+@Table( name = "\"Feedback\"")
 @NoArgsConstructor
 @AllArgsConstructor
 public class FeedBack extends Created{

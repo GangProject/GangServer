@@ -31,6 +31,6 @@ public class ArticleService {
     }
 
     public ArticleListDto findArticleList(int currentPage){
-        return ArticleListDto.of(articleRepository.articleList(currentPage),currentPage);
+        return ArticleListDto.of(articleRepository.articleList(currentPage),currentPage, articleRepository.totalCount());
     }
 }

@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface ArticleRepositoryCustom {
     List<Article> articleList(int currnetPage);
+
+    int totalCount();
 }

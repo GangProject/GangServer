@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@Table( name = "article")
+@Table( name = "\"Article\"")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
