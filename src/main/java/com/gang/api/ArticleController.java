@@ -54,11 +54,11 @@ public class ArticleController {
     @RequestMapping(value = "" , method = RequestMethod.GET)
     public ArticleListDto list(@ApiParam(value = "현제 게시물 페이지 번호")
                                      @RequestParam(value="currentPage",required = false, defaultValue = "1") int currentPage){
-        //try{
+        try {
             return articleService.findArticleList(currentPage);
-        //}catch(Exception e){
-          //  log.info(e.getMessage());
-        //}
-        //return ArticleListDto.empty();
+        }catch(Exception e){
+            log.info(e.getMessage());
+        }
+        return ArticleListDto.empty();
     }
 }

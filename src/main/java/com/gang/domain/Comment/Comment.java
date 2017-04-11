@@ -28,4 +28,11 @@ public class Comment extends Created{
     @JoinColumn( name ="article_id")
     @ManyToOne
     private Article article;
+
+    public static Comment of(Article article, String content){
+        return Comment.builder()
+                .article(article)
+                .content(content)
+                .build();
+    }
 }
