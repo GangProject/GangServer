@@ -45,7 +45,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('commons-dbcp:commons-dbcp:1.2.2')
 	compile 'org.hibernate:hibernate-java8:5.2.6.Final'
-
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	
 	// swagger
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.5.0'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.5.0'
@@ -66,7 +67,7 @@ dependencies {
     def querydslVersion = "4.1.4"
     /**
      * querydsl dependency
-     */
+    g */
     compile ("com.querydsl:querydsl-core:$querydslVersion")
     compile ("com.querydsl:querydsl-apt:$querydslVersion")
     compile ("com.querydsl:querydsl-jpa:$querydslVersion")
