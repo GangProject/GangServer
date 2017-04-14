@@ -25,13 +25,12 @@ public class Comment extends Created{
     @Column( name = "content")
     private String content;
 
-    @JoinColumn( name ="article_id")
-    @ManyToOne
-    private Article article;
+    @Column( name ="article_id")
+    private Long articleId;
 
     public static Comment of(Article article, String content){
         return Comment.builder()
-                .article(article)
+                .articleId(article.getId())
                 .content(content)
                 .build();
     }

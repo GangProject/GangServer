@@ -1,9 +1,9 @@
 package com.gang.api;
 
 import com.gang.api.common.ResponseDto;
+import com.gang.domain.Article.ArticleDetailDto;
 import com.gang.domain.Article.ArticleDto;
 import com.gang.domain.Article.ArticleListDto;
-import com.gang.domain.Article.ArticleRequestDto;
 import com.gang.domain.Article.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -60,5 +60,18 @@ public class ArticleController {
             log.info(e.getMessage());
         }
         return ArticleListDto.empty();
+    }
+
+    @ApiOperation(value = "게시물 읽기", notes = "게시물 읽기")
+    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    public ArticleDetailDto read(@ApiParam(value = "게시물 id")
+                                 @RequestParam(value="articleId") Long articleId){
+        ArticleDetailDto dto = null;
+        try{
+            dto = articleService.findArticle(articleId);
+        }catch(Exception e){
+            log.error("article read" + e.getMessage(), e);
+        }
+        return dto;
     }
 }

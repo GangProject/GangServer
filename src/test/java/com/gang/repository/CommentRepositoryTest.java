@@ -52,7 +52,7 @@ public class CommentRepositoryTest {
         Comment findByComment = commentRepository.findOne(createdComment.getId());
 
         assertThat(createdComment.getContent() ,is(findByComment.getContent()));
-        assertThat(createdComment.getArticle(), is(findByComment.getArticle()));
+        assertThat(createdComment.getArticleId(), is(findByComment.getArticleId()));
     }
 
     @Test
@@ -65,4 +65,5 @@ public class CommentRepositoryTest {
 
         assertThat(commentRepository.countByArticleId(article.getId()), is(0));
     }
+    
 }

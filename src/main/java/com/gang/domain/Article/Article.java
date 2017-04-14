@@ -2,8 +2,12 @@ package com.gang.domain.Article;
 
 import javax.persistence.*;
 
+import com.gang.domain.Comment.Comment;
 import com.gang.domain.commons.Modified;
 import lombok.*;
+
+import java.util.List;
+
 /**
  * Created by iljun on 2017-03-11.
  */
