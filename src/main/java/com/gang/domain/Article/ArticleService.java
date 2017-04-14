@@ -1,5 +1,6 @@
 package com.gang.domain.Article;
 
+import com.gang.domain.Comment.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ import java.util.List;
 public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
+
+    @Autowired
+    private CommentService commentService;
 
     @Transactional(readOnly = false)
     public Article saveArticle(ArticleDto articleDto){
@@ -36,5 +40,9 @@ public class ArticleService {
 
     public Article findById(Long id){
         return articleRepository.findOne(id);
+    }
+
+    public ArticleDetailDto findArticle(Long articleId){
+        return ArticleDetailDto.of(articleRepository.findOne(articleId),commentService.findByArticleId(articleId));
     }
 }

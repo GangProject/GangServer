@@ -31,10 +31,5 @@ public class ArticleDto {
                 .build();
     }
 
-    public static ArticleDto of(ArticleRequestDto articleRequestDto){
-        return ArticleDto.builder()
-                .content(articleRequestDto.getContent())
-                .title(articleRequestDto.getTitle())
-                .build();
-    }
+
 }

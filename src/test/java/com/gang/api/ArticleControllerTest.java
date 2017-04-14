@@ -1,8 +1,11 @@
 package com.gang.api;
 
 import com.gang.api.ArticleController;
-import com.gang.domain.Article.ArticleResponseDto;
+import com.gang.domain.Article.Article;
+import com.gang.domain.Article.ArticleDto;
+import com.gang.domain.Article.ArticleService;
 import net.minidev.json.JSONObject;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +36,24 @@ public class ArticleControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private ArticleService articleService;
+
+    private Article article;
+
+    @Before
+    public void setUp() throws Exception{
+        article = Article.of("test","test");
+        article = articleService.saveArticle(ArticleDto.of(article));
+    }
+
     @Test
     public void articleSaveTest() throws Exception{
         mockMvc.perform(post("/api/article/save")//요청하는 url
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .param("title","testTitle")
-                .param("content","testContent"))
+                .param("title",article.getTitle())
+                .param("content",article.getContent()))
                 .andExpect(status().isOk())//요청결과가 200이다
                 .andReturn();
     }
@@ -49,6 +63,16 @@ public class ArticleControllerTest {
         mockMvc.perform(get("/api/article")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void articleReadTest() throws Exception{
+        mockMvc.perform(get("/api/article/read")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("articleId", String.valueOf(article.getId())))
                 .andExpect(status().isOk())
                 .andReturn();
     }
