@@ -64,6 +64,13 @@ dependencies {
 	//devtools
 	compile("org.springframework.boot:spring-boot-devtools")
 
+	
+	//Web Crawling
+	compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+	compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.4'
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+
 	def querydslVersion = "4.1.4"
 	/**
 	 * querydsl dependency

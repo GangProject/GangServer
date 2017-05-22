@@ -1,10 +1,7 @@
 package com.gang.api;
 
 import com.gang.api.common.ResponseDto;
-import com.gang.domain.Article.ArticleDetailDto;
-import com.gang.domain.Article.ArticleDto;
-import com.gang.domain.Article.ArticleListDto;
-import com.gang.domain.Article.ArticleService;
+import com.gang.domain.Article.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -28,14 +25,13 @@ public class ArticleController {
 
     @ApiOperation(value = "게시물 작성", notes = "게시물 작성")
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public ResponseDto saveArticle(@RequestParam(value="title") String title, @RequestParam(value="content") String content){
+    public ArticleResponseDto saveArticle(@RequestParam(value="title") String title, @RequestParam(value="content") String content){
         try{
-            articleService.saveArticle(ArticleDto.of(title,content));
-            return ResponseDto.ofSuccess("success");
+            return ArticleResponseDto.of(articleService.saveArticle(ArticleDto.of(title,content)),"success");
         }catch(Exception e){
             log.info(e.getMessage());
         }
-        return ResponseDto.ofEmpty();
+        return ArticleResponseDto.of();
     }
 
     @ApiOperation(value="게시물 삭제", notes = "게시물 삭제")
