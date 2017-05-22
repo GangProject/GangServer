@@ -1,5 +1,6 @@
 package com.gang.domain.Article;
 
+import com.gang.domain.Comment.QComment;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 
 import java.util.List;
@@ -27,4 +28,5 @@ public class ArticleRepositoryImpl extends QueryDslRepositorySupport implements 
         return (int)from(qArticle)
                 .fetchCount();
     }
+
 }
