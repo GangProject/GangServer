@@ -65,5 +65,5 @@ public class CommentRepositoryTest {
 
         assertThat(commentRepository.countByArticleId(article.getId()), is(0));
     }
-    
+
 }
