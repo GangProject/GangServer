@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ArticleListDto {
-    private List<Article> list;
+    private List<ListDto> list;
     private int currentPage;
     private int totalCount;
 
@@ -25,7 +25,7 @@ public class ArticleListDto {
                 .build();
     }
 
-    public static ArticleListDto of(List<Article> articleDtos, int currentPage, int totalCount){
+    public static ArticleListDto of(List<ListDto> articleDtos, int currentPage, int totalCount){
         return ArticleListDto.builder()
                 .list(articleDtos)
                 .currentPage(currentPage)

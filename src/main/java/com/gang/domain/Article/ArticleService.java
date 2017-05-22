@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +36,12 @@ public class ArticleService {
     }
 
     public ArticleListDto findArticleList(int currentPage){
-        return ArticleListDto.of(articleRepository.articleList(currentPage),currentPage, articleRepository.totalCount());
+        List<Article> list = articleRepository.articleList(currentPage);
+        List<ListDto> list2 = new ArrayList<ListDto>();
+        for(int i=0; i<list.size(); i++){
+            list2.add(ListDto.of(list.get(i),commentService.countByArticleId(list.get(i).getId())));
+        }
+        return ArticleListDto.of(list2,currentPage, articleRepository.totalCount());
     }
 
     public Article findById(Long id){

@@ -30,4 +30,8 @@ public class CommentService {
     public List<Comment> findByArticleId(Long articleId){
         return commentRepository.findByArticleId(articleId);
     }
+
+    public int countByArticleId(Long articleId){
+        return commentRepository.countByArticleId(articleId);
+    }
 }
