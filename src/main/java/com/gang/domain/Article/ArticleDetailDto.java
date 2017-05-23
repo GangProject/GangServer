@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -17,6 +19,7 @@ public class ArticleDetailDto {
     private Long id;
     private String title;
     private String content;
+    private LocalDateTime lastModifiedTime;
     private List<Comment> commentList;
 
     public static ArticleDetailDto of(Article article ,List<Comment> comment){
@@ -24,6 +27,7 @@ public class ArticleDetailDto {
                 .id(article.getId())
                 .title(article.getTitle())
                 .content(article.getContent())
+                .lastModifiedTime(article.getModifiedAt())
                 .commentList(comment)
                 .build();
     }
