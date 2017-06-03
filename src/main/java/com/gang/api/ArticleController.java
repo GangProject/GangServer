@@ -34,6 +34,15 @@ public class ArticleController {
         return ArticleResponseDto.of();
     }
 
+    @ApiOperation(value = "게시물 작성전", notes = "게시물 작성전")
+    @RequestMapping(value = "save", method = RequestMethod.GET)
+    public String checkFaceBook(){
+        if(articleService.checkFacebook()==false){
+            return "페이스북 로그인";
+        }
+        return "로그인 불필요";
+    }
+
     @ApiOperation(value="게시물 삭제", notes = "게시물 삭제")
     @RequestMapping(value = "delete" , method = RequestMethod.GET)
     public ResponseDto deleteArticle(@RequestParam(value="id") Long id){

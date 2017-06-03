@@ -25,6 +25,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackageClasses = { Domains.class })
 @SpringBootApplication
 @PropertySource({ "classpath:DB.yml" })
+@PropertySource({ "classpath:FaceBook.yml"})
 public class GangApplication {
 
 	public static void main(String[] args) {

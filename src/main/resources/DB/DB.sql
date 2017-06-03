@@ -7,7 +7,8 @@ create table GANG.Article(
     `createdAt` dateTime Not Null,
     `createdBy` varchar(50) Not Null,
     `modifiedAt` dateTime Not Null,
-    `modifiedBy` varchar(50) Not Null
+    `modifiedBy` varchar(50) Not Null,
+    `writer` varchar(50) NOt NULL
 );
 
 DROP TABLE IF EXISTS GANG.Comment;

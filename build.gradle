@@ -74,6 +74,9 @@ dependencies {
 	//Jsoup
 	compile 'org.jsoup:jsoup:1.10.2'
 
+	//faceBook
+	compile("org.springframework.social:spring-social-facebook")
+
 	def querydslVersion = "4.1.4"
 	/**
 	 * querydsl dependency
