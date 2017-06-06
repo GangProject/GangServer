@@ -26,14 +26,9 @@ public class ArticleController {
     @ApiOperation(value = "게시물 작성", notes = "게시물 작성")
     @RequestMapping(value = "save", method = RequestMethod.POST)
     public ArticleResponseDto saveArticle(@RequestParam(value="title") String title, @RequestParam(value="content") String content){
-        try{
-            return ArticleResponseDto.of(articleService.saveArticle(ArticleDto.of(title,content)),"success");
-        }catch(Exception e){
-            log.info(e.getMessage());
-        }
-        return ArticleResponseDto.of();
+        return ArticleResponseDto.of(articleService.saveArticle(ArticleDto.of(title,content)),"success");
     }
-
+/*
     @ApiOperation(value = "게시물 작성전", notes = "게시물 작성전")
     @RequestMapping(value = "save", method = RequestMethod.GET)
     public String checkFaceBook(){
@@ -42,41 +37,25 @@ public class ArticleController {
         }
         return "로그인 불필요";
     }
-
+*/
     @ApiOperation(value="게시물 삭제", notes = "게시물 삭제")
     @RequestMapping(value = "delete" , method = RequestMethod.GET)
     public ResponseDto deleteArticle(@RequestParam(value="id") Long id){
-        try{
-            articleService.delete(id);
-            return ResponseDto.ofSuccess("success");
-        }catch(Exception e){
-            log.info(e.getMessage());
-        }
-        return ResponseDto.ofEmpty();
+        articleService.delete(id);
+        return ResponseDto.ofSuccess("success");
     }
 
     @ApiOperation(value= "게시판 리스트", notes = "게시판 리스트")
     @RequestMapping(value = "" , method = RequestMethod.GET)
     public ArticleListDto list(@ApiParam(value = "현제 게시물 페이지 번호")
                                      @RequestParam(value="currentPage",required = false, defaultValue = "1") int currentPage){
-        try {
-            return articleService.findArticleList(currentPage);
-        }catch(Exception e){
-            log.info(e.getMessage());
-        }
-        return ArticleListDto.empty();
+        return articleService.findArticleList(currentPage);
     }
 
     @ApiOperation(value = "게시물 읽기", notes = "게시물 읽기")
     @RequestMapping(value = "/read", method = RequestMethod.GET)
     public ArticleDetailDto read(@ApiParam(value = "게시물 id")
                                  @RequestParam(value="articleId") Long articleId){
-        ArticleDetailDto dto = null;
-        try{
-            dto = articleService.findArticle(articleId);
-        }catch(Exception e){
-            log.error("article read" + e.getMessage(), e);
-        }
-        return dto;
+        return articleService.findArticle(articleId);
     }
 }

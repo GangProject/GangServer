@@ -41,3 +41,14 @@ create table GANG.Feedback_comment(
     `createdBy` varchar(50) Not Null,
     `feedback_id` bigint(20) Not Null
 );
+
+DROP TABLE IF EXISTS GANG.Log;
+
+create table GANG.Log(
+  `log_id` bigint(20) NOt null auto_increment primary key,
+  `ip` varchar(255) Not null,
+  `url` varchar(255) Not null,
+  `body` longText Not null,
+  `createdAt` dateTime NOT null,
+  `createdBy` varchar(50) Not null
+)

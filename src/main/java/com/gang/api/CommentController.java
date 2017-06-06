@@ -30,25 +30,16 @@ public class CommentController {
                             @RequestParam(value = "articleId") Long articleId,
                             @ApiParam(value = "내용")
                             @RequestParam(value = "content") String content){
-        try{
-            commentService.save(articleId,content);
-            return ResponseDto.ofSuccess("댓글 저장 성공");
-        }catch(Exception e){
-            log.error("Comment Save " + e.getMessage(), e);
-        }
-        return ResponseDto.ofFail("댓글 저장 실패");
+        commentService.save(articleId,content);
+        return ResponseDto.ofSuccess("댓글 저장 성공");
     }
 
     @ApiOperation(value = "댓글 삭제", notes = "댓글 삭제")
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public ResponseDto delete(@ApiParam(value="게시물 id")
                               @RequestParam(value = "articleId") Long articleId){
-        try{
-            commentService.delete(articleId);
-            return ResponseDto.ofSuccess("댓글 삭제 성공");
-        }catch(Exception e){
-            log.error("Comment delete " + e.getMessage(), e);
-        }
-        return ResponseDto.ofFail("댓글 삭제 실패");
+        commentService.delete(articleId);
+        return ResponseDto.ofSuccess("댓글 삭제 성공");
     }
+
 }

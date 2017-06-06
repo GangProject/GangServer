@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +31,18 @@ public class HomeController {
 
     @ApiOperation(value = "오늘 게임정보 API", notes = "오늘 게임 정보 API")
     @RequestMapping(value = "gameInfo", method = RequestMethod.GET)
-    public List<GameInfo> todayGameInfo(){
-        List<GameInfo> gameInfo = new ArrayList<GameInfo>();
-        try{
+    public List<GameInfo> todayGameInfo() throws IOException {
+        //List<GameInfo> gameInfo = new ArrayList<GameInfo>();
+        //try{
             return gameInfoService.todayGame();
-        }catch(Exception e){
-            log.info(e.getMessage());
-        }
-        return gameInfo;
+        //}catch(Exception e){
+          //  log.info(e.getMessage());
+        //}
+        //return gameInfo;
     }
 
+    @RequestMapping(value = "exception")
+    public void exception(){
+        throw new IllegalArgumentException("Getting article problem.");
+    }
 }
