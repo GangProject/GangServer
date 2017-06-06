@@ -31,7 +31,7 @@ public class CommentController {
                             @ApiParam(value = "내용")
                             @RequestParam(value = "content") String content){
         commentService.save(articleId,content);
-        return ResponseDto.ofSuccess("댓글 저장 성공");
+        return ResponseDto.ofSuccess("댓글 저장 성공",null);
     }
 
     @ApiOperation(value = "댓글 삭제", notes = "댓글 삭제")
@@ -39,7 +39,7 @@ public class CommentController {
     public ResponseDto delete(@ApiParam(value="게시물 id")
                               @RequestParam(value = "articleId") Long articleId){
         commentService.delete(articleId);
-        return ResponseDto.ofSuccess("댓글 삭제 성공");
+        return ResponseDto.ofSuccess("댓글 삭제 성공",null);
     }
 
 }
