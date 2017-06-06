@@ -29,12 +29,7 @@ public class FeedBackController {
     @RequestMapping(value = "" , method = RequestMethod.GET)
     public FeedBackListDto list (@ApiParam(value="피드백 페이지 번호")
                                      @RequestParam(value= "currentPage", required = false, defaultValue = "1") int currentPage){
-        try{
-            return feedBackService.findList(currentPage);
-        }catch(Exception e){
-            log.error("feedback List " + e.getMessage(),e);
-        }
-        return FeedBackListDto.empty();
+        return feedBackService.findList(currentPage);
     }
 
     @ApiOperation(value = "피드백 save", notes = "피드백 save")
@@ -45,26 +40,16 @@ public class FeedBackController {
                                 @RequestParam(value = "password") String password,
                             @ApiParam(value = "피드백 본문")
                                 @RequestParam(value = "content") String content){
-        try{
-            feedBackService.feedBackSave(name,password,content);
-            return ResponseDto.ofSuccess("저장 성공");
-        }catch(Exception e){
-            log.error("feedback save" + e.getMessage(),e);
-        }
-        return ResponseDto.ofFail("저장 실패");
+        feedBackService.feedBackSave(name,password,content);
+        return ResponseDto.ofSuccess("저장 성공");
     }
 
     @ApiOperation(value = "피드백 remove", notes= "피드백 remove")
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public ResponseDto remove(@ApiParam(value = "피드백 id")
                               @RequestParam(value= "id") Long id){
-        try{
-            feedBackService.feedBackRemove(id);
-            return ResponseDto.ofSuccess("성공");
-        }catch(Exception e){
-            log.error("feedBack remove " + e.getMessage() , e);
-        }
-        return ResponseDto.ofFail("실패");
+        feedBackService.feedBackRemove(id);
+        return ResponseDto.ofSuccess("성공");
     }
 
     @ApiOperation(value = "피드백 update", notes = "피드백 update")
@@ -77,12 +62,8 @@ public class FeedBackController {
                               @RequestParam(value = "content") String content
                               ){
         String message=null;
-        try{
-            message = feedBackService.feedBackUpdate(id,password,content);
-            return ResponseDto.ofSuccess(message);
-        }catch(Exception e){
-            log.error("feedBack update " + e.getMessage(), e);
-        }
-        return ResponseDto.ofFail(message);
+        message = feedBackService.feedBackUpdate(id,password,content);
+        return ResponseDto.ofSuccess(message);
+
     }
 }

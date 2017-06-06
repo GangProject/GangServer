@@ -7,7 +7,8 @@ create table GANG.Article(
     `createdAt` dateTime Not Null,
     `createdBy` varchar(50) Not Null,
     `modifiedAt` dateTime Not Null,
-    `modifiedBy` varchar(50) Not Null
+    `modifiedBy` varchar(50) Not Null,
+    `writer` varchar(50) NOt NULL
 );
 
 DROP TABLE IF EXISTS GANG.Comment;
@@ -20,9 +21,9 @@ create Table GANG.Comment(
     `article_id` long Not Null
 );
 
-DROP TABLE IF EXISTS GANG.feedback;
+DROP TABLE IF EXISTS GANG.Feedback;
 
-create Table GANG.feedback(
+create Table GANG.Feedback(
 	`Feedback_id` bigint(20) Not Null auto_increment primary Key,
     `content` varchar(200) Not Null,
     `createdAt` dateTime Not Null,
@@ -31,9 +32,9 @@ create Table GANG.feedback(
     `password` varchar(256) NOT NULL
 );
 
-DROP TABLE IF EXISTS GANG.feedback_comment;
+DROP TABLE IF EXISTS GANG.Feedback_comment;
 
-create table GANG.feedback_comment(
+create table GANG.Feedback_comment(
 	`feedback_comment_id` bigint(20) Not Null auto_increment primary Key,
     `content` varchar(200) NOt Null,
     `createdAt` dateTime Not Null,

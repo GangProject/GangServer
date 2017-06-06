@@ -3,6 +3,8 @@ package com.gang.domain.Article;
 import com.gang.domain.Comment.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,9 +23,22 @@ public class ArticleService {
     @Autowired
     private CommentService commentService;
 
+    private Facebook facebook;
+    private ConnectionRepository connectionRepository;
+
+    public ArticleService(Facebook faceBook, ConnectionRepository connectionRepository){
+        this.facebook = faceBook;
+        this.connectionRepository = connectionRepository;
+    }
+
+    public boolean checkFacebook(){
+        if(connectionRepository.findPrimaryConnection(Facebook.class)==null)
+            return false;
+        return true;
+    }
     @Transactional(readOnly = false)
     public Article saveArticle(ArticleDto articleDto){
-        return articleRepository.save(Article.of(articleDto));
+        return articleRepository.save(Article.of(articleDto,facebook.userOperations().getUserProfile().getLastName()));
     }
 
     public List<Article> findAllArticleList(){

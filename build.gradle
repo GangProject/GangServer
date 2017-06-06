@@ -4,8 +4,8 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
-		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
+		maven { url "https://repo.spring.io/snapshot" }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -73,6 +73,11 @@ dependencies {
 
 	//Jsoup
 	compile 'org.jsoup:jsoup:1.10.2'
+
+	//faceBook
+	compile("org.springframework.social:spring-social-facebook")
+
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
 	def querydslVersion = "4.1.4"
 	/**

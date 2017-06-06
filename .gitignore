@@ -16,6 +16,7 @@
 *.iml
 *.ipr
 DB.yml
+FaceBook.yml
 
 ### NetBeans ###
 nbproject/private/

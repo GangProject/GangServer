@@ -20,6 +20,7 @@ public class ArticleRepositoryImpl extends QueryDslRepositorySupport implements 
         return from(qArticle)
                 .offset((currentPage-1) * 10)
                 .limit(currentPage*10)
+                .orderBy(qArticle.id.desc())
                 .fetch();
     }
 

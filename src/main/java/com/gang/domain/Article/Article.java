@@ -31,6 +31,9 @@ public class Article extends Modified{
     @Lob
     private String content;
 
+    @Column(name = "writer")
+    private String writer;
+
     public static Article of(String title, String content){
         return Article.builder()
                 .title(title)
@@ -38,10 +41,11 @@ public class Article extends Modified{
                 .build();
     }
 
-    public static Article of(ArticleDto articleDto){
+    public static Article of(ArticleDto articleDto,String writer){
         return Article.builder()
                 .title(articleDto.getTitle())
                 .content(articleDto.getContent())
+                .writer(writer)
                 .build();
     }
 
