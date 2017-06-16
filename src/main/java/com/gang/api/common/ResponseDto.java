@@ -16,11 +16,6 @@ public class ResponseDto {
     private String message;
     private Object result;
 
-    enum Status {
-        SUCCESS,
-        FAIL
-    }
-
     public static ResponseDto ofSuccess(String message,Object result) {
         return ResponseDto.builder()
                 .status(Status.SUCCESS)
