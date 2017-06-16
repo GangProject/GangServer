@@ -46,7 +46,8 @@ public class LogService {
     static String getFullURL(HttpServletRequest request) {
         StringBuffer requestURL = request.getRequestURL();
         String queryString = request.getQueryString();
-        if (queryString == null) return requestURL.toString();
+        if (queryString == null)
+            return requestURL.toString();
         return requestURL.append('?').append(queryString).toString();
     }
 

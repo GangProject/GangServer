@@ -25,8 +25,8 @@ public class ArticleController {
 
     @ApiOperation(value = "게시물 작성", notes = "게시물 작성")
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public ArticleResponseDto saveArticle(@RequestParam(value="title") String title, @RequestParam(value="content") String content){
-        return ArticleResponseDto.of(articleService.saveArticle(ArticleDto.of(title,content)),"success");
+    public ResponseDto saveArticle(@RequestParam(value="title") String title, @RequestParam(value="content") String content){
+        return ResponseDto.ofSuccess("게시물 작성 성공",ArticleResponseDto.of(articleService.saveArticle(ArticleDto.of(title,content)),"success"));
     }
 /*
     @ApiOperation(value = "게시물 작성전", notes = "게시물 작성전")
@@ -42,20 +42,20 @@ public class ArticleController {
     @RequestMapping(value = "delete" , method = RequestMethod.GET)
     public ResponseDto deleteArticle(@RequestParam(value="id") Long id){
         articleService.delete(id);
-        return ResponseDto.ofSuccess("success");
+        return ResponseDto.ofSuccess("success",null);
     }
 
     @ApiOperation(value= "게시판 리스트", notes = "게시판 리스트")
     @RequestMapping(value = "" , method = RequestMethod.GET)
-    public ArticleListDto list(@ApiParam(value = "현제 게시물 페이지 번호")
+    public ResponseDto list(@ApiParam(value = "현제 게시물 페이지 번호")
                                      @RequestParam(value="currentPage",required = false, defaultValue = "1") int currentPage){
-        return articleService.findArticleList(currentPage);
+        return ResponseDto.ofSuccess("success",articleService.findArticleList(currentPage));
     }
 
     @ApiOperation(value = "게시물 읽기", notes = "게시물 읽기")
     @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public ArticleDetailDto read(@ApiParam(value = "게시물 id")
+    public ResponseDto read(@ApiParam(value = "게시물 id")
                                  @RequestParam(value="articleId") Long articleId){
-        return articleService.findArticle(articleId);
+        return ResponseDto.ofSuccess("success",articleService.findArticle(articleId));
     }
 }

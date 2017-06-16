@@ -32,13 +32,12 @@ public class HomeController {
     @ApiOperation(value = "오늘 게임정보 API", notes = "오늘 게임 정보 API")
     @RequestMapping(value = "gameInfo", method = RequestMethod.GET)
     public List<GameInfo> todayGameInfo() throws IOException {
-        //List<GameInfo> gameInfo = new ArrayList<GameInfo>();
-        //try{
+
             return gameInfoService.todayGame();
-        //}catch(Exception e){
-          //  log.info(e.getMessage());
-        //}
-        //return gameInfo;
+
+
+
+
     }
 
     @RequestMapping(value = "exception")

@@ -14,22 +14,22 @@ import lombok.*;
 public class ResponseDto {
     private Status status;
     private String message;
+    private Object result;
 
-    enum Status {
-        SUCCESS,
-        FAIL
-    }
-
-    public static ResponseDto ofSuccess(String message) {
+    public static ResponseDto ofSuccess(String message,Object result) {
         return ResponseDto.builder()
                 .status(Status.SUCCESS)
-                .message(message).build();
+                .message(message)
+                .result(result)
+                .build();
     }
 
     public static ResponseDto ofFail(String message) {
         return ResponseDto.builder()
                 .status(Status.FAIL)
-                .message(message).build();
+                .message(message)
+                .result(null)
+                .build();
     }
 
     public static ResponseDto ofEmpty(){

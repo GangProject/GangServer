@@ -17,6 +17,7 @@
 *.ipr
 DB.yml
 FaceBook.yml
+CoreURL.yml
 
 ### NetBeans ###
 nbproject/private/

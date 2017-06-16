@@ -27,9 +27,9 @@ public class FeedBackController {
 
     @ApiOperation(value = "피드백 List" , notes = "피드백 List")
     @RequestMapping(value = "" , method = RequestMethod.GET)
-    public FeedBackListDto list (@ApiParam(value="피드백 페이지 번호")
+    public ResponseDto list (@ApiParam(value="피드백 페이지 번호")
                                      @RequestParam(value= "currentPage", required = false, defaultValue = "1") int currentPage){
-        return feedBackService.findList(currentPage);
+        return ResponseDto.ofSuccess("피드백 List",feedBackService.findList(currentPage));
     }
 
     @ApiOperation(value = "피드백 save", notes = "피드백 save")
@@ -41,7 +41,7 @@ public class FeedBackController {
                             @ApiParam(value = "피드백 본문")
                                 @RequestParam(value = "content") String content){
         feedBackService.feedBackSave(name,password,content);
-        return ResponseDto.ofSuccess("저장 성공");
+        return ResponseDto.ofSuccess("피드백 저장 성공",null);
     }
 
     @ApiOperation(value = "피드백 remove", notes= "피드백 remove")
@@ -49,7 +49,7 @@ public class FeedBackController {
     public ResponseDto remove(@ApiParam(value = "피드백 id")
                               @RequestParam(value= "id") Long id){
         feedBackService.feedBackRemove(id);
-        return ResponseDto.ofSuccess("성공");
+        return ResponseDto.ofSuccess("성공",null);
     }
 
     @ApiOperation(value = "피드백 update", notes = "피드백 update")
@@ -63,7 +63,7 @@ public class FeedBackController {
                               ){
         String message=null;
         message = feedBackService.feedBackUpdate(id,password,content);
-        return ResponseDto.ofSuccess(message);
+        return ResponseDto.ofSuccess("success",message);
 
     }
 }
